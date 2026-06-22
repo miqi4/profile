@@ -97,7 +97,7 @@ export default function ProfileSection() {
             <div className="absolute inset-0 bg-gradient-to-tr from-surface to-surface-variant opacity-50 z-0"></div>
             <Image 
               alt="Mohammad Iqbal Profile" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAVNm2xopEMDA7QMdYf7vrrfHQ-RvOqNx8t41iAhKdLDxmIcKT5F1Wzk7EbOzOZfEJwmsqq9RO2vtLIncuRztxJuDuZC_yCjD5zy8RprAnmx_vhjojZpHnP_G-KBJPeVhvbJtG0K8Yj11s3vy59zP7HTdsFqmGfp5COGrmFCAQOim95G5RtvvkIFsF_q7PTRhH1LbjB3JU9ORI7Feyviz_su2P51fse2vpfv-eTRNxKAI7GUUxj-8tMX2vXvOkHEFGcJJl1Rf5KvkU"
+              src="/profil.jpg"
               width={800}
               height={800}
               className="w-full h-full object-cover relative z-10 transition-transform duration-700 group-hover:scale-105"
