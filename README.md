@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Mohammad Iqbal
 
-## Getting Started
+Portfolio website profesional yang dibangun dengan Next.js 16, menampilkan profil, keahlian, dan proyek-proyek.
 
-First, run the development server:
+## Teknologi
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js 16.2.9** - React framework dengan App Router
+- **Tailwind CSS v4** - Utility-first CSS framework
+- **TypeScript** - Type-safe JavaScript
+- **Next Font** - Optimasi font otomatis dengan Inter & Sora
+
+## Struktur Project
+
+```
+├── app/
+│   ├── components/      # Komponen reusable (Header, Footer)
+│   ├── page.tsx         # Homepage / Profile
+│   ├── skills/          # Halaman Skills
+│   ├── projects/        # Halaman Projects
+│   ├── layout.tsx       # Root layout
+│   └── globals.css      # Global styles & Tailwind config
+├── import/              # File HTML original (untuk referensi)
+└── public/              # Asset statis
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Fitur
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- ✅ Responsive design (mobile-first)
+- ✅ Dark theme dengan custom color palette
+- ✅ Font optimization dengan next/font
+- ✅ Image optimization dengan next/image
+- ✅ Animasi smooth dengan CSS transitions
+- ✅ SEO-friendly dengan metadata
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Development
 
-## Learn More
+```bash
+# Install dependencies
+npm install
 
-To learn more about Next.js, take a look at the following resources:
+# Run development server
+npm run dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Build for production
+npm run build
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Start production server
+npm start
+```
 
-## Deploy on Vercel
+Buka [http://localhost:3000](http://localhost:3000) di browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Halaman
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **/** - Homepage dengan profil dan hero section
+- **/skills** - Keahlian teknis dengan progress bars
+- **/projects** - Portfolio proyek dengan bento grid layout
+
+## Customization
+
+### Warna
+Edit custom color palette di `app/globals.css` dalam `@theme` block.
+
+### Konten
+- Profile: `app/page.tsx`
+- Skills: `app/skills/page.tsx`
+- Projects: `app/projects/page.tsx`
+
+### Font
+Font dikonfigurasi di `app/layout.tsx` menggunakan `next/font/google`.
+
+## Build & Deploy
+
+```bash
+npm run build
+```
+
+Output di folder `.next/` siap untuk deploy ke Vercel, Netlify, atau platform lainnya.
+
+---
+
+© 2024 Mohammad Iqbal. Built with Next.js & Tailwind CSS.

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohammad Iqbal - Skills</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#c0c1ff",
+                        "secondary": "#5de6ff",
+                        "outline-variant": "#464554",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#301400",
+                        "on-surface": "#dae2fd",
+                        "primary-container": "#8083ff",
+                        "secondary-container": "#00cbe6",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-primary": "#1000a9",
+                        "on-tertiary": "#4f2500",
+                        "primary-fixed": "#e1e0ff",
+                        "on-secondary": "#00363e",
+                        "on-primary-fixed": "#07006c",
+                        "secondary-fixed-dim": "#2fd9f4",
+                        "surface-tint": "#c0c1ff",
+                        "on-secondary-fixed": "#001f25",
+                        "inverse-on-surface": "#283044",
+                        "secondary-fixed": "#a2eeff",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "on-primary-container": "#0d0096",
+                        "surface-variant": "#2d3449",
+                        "surface-container-low": "#131b2e",
+                        "surface-container": "#171f33",
+                        "on-surface-variant": "#c7c4d7",
+                        "tertiary": "#ffb783",
+                        "surface-bright": "#31394d",
+                        "tertiary-fixed": "#ffdcc5",
+                        "surface-container-high": "#222a3d",
+                        "surface": "#0b1326",
+                        "inverse-primary": "#494bd6",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "tertiary-container": "#d97721",
+                        "on-background": "#dae2fd",
+                        "outline": "#908fa0",
+                        "surface-container-highest": "#2d3449",
+                        "background": "#0b1326",
+                        "surface-container-lowest": "#060e20",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "on-tertiary-container": "#452000",
+                        "inverse-surface": "#dae2fd",
+                        "surface-dim": "#0b1326",
+                        "on-secondary-container": "#00515d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "lg": "48px",
+                        "container-max": "1200px",
+                        "md": "24px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Sora"],
+                        "headline-xl": ["Sora"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Sora"],
+                        "headline-lg": ["Sora"],
+                        "code-md": ["monospace"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "code-md": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .skill-bar {
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .skill-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(192, 193, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md text-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface/80 backdrop-blur-md dark:bg-surface/80 docked full-width top-0 sticky z-50 border-b border-white/10 flat no shadows">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-container-max mx-auto">
+<div class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed-dim">
+                Iqbaal
+            </div>
+<!-- Desktop Navigation -->
+<nav class="hidden md:flex gap-md items-center">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors duration-200 hover:text-secondary" href="#">Profile</a>
+<a class="font-label-sm text-label-sm text-primary font-bold border-b-2 border-primary pb-1 scale-95 transition-transform duration-200" href="#">Skills</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors duration-200 hover:text-secondary" href="#">Projects</a>
+</nav>
+<button class="hidden md:block bg-primary text-on-primary font-label-sm text-label-sm px-6 py-2 rounded-full hover:bg-primary-fixed transition-colors duration-200">
+                Contact Me
+            </button>
+<!-- Mobile Menu Icon (Simplified for structure) -->
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-5 md:px-lg xl:px-xl py-lg md:py-xl">
+<section class="mb-xl">
+<div class="max-w-3xl">
+<h1 class="font-headline-lg-mobile md:font-headline-xl text-headline-lg-mobile md:text-headline-xl text-primary mb-sm">Technical Proficiency</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">A comprehensive overview of my core engineering capabilities, emphasizing robust backend architectures and modern frontend frameworks.</p>
+</div>
+</section>
+<!-- Bento Grid / Cards Layout for Skills -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Skill Card: Next.js -->
+<div class="skill-card bg-surface-container border border-white/10 rounded-lg p-md transition-all duration-300 flex flex-col justify-between h-full">
+<div>
+<div class="flex items-center gap-sm mb-md">
+<div class="w-12 h-12 rounded bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]" data-icon="javascript">javascript</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Next.js</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Building performant, SEO-optimized React applications with server-side rendering and static site generation.</p>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-sm text-label-sm text-on-surface uppercase">Proficiency</span>
+<span class="font-label-sm text-label-sm text-secondary">90%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="skill-bar h-full bg-gradient-to-r from-primary to-secondary rounded-full" data-width="90%"></div>
+</div>
+</div>
+</div>
+<!-- Skill Card: Laravel + Filament -->
+<div class="skill-card bg-surface-container border border-white/10 rounded-lg p-md transition-all duration-300 flex flex-col justify-between h-full">
+<div>
+<div class="flex items-center gap-sm mb-md">
+<div class="w-12 h-12 rounded bg-surface-container-high flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[32px]" data-icon="code">code</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Laravel + Filament</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Architecting scalable backend systems, developing robust APIs, and rapidly constructing powerful admin panels using Filament.</p>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-sm text-label-sm text-on-surface uppercase">Proficiency</span>
+<span class="font-label-sm text-label-sm text-secondary">85%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="skill-bar h-full bg-gradient-to-r from-primary to-secondary rounded-full" data-width="85%"></div>
+</div>
+</div>
+</div>
+<!-- Skill Card: Java -->
+<div class="skill-card bg-surface-container border border-white/10 rounded-lg p-md transition-all duration-300 flex flex-col justify-between h-full lg:col-span-1 md:col-span-2 lg:col-start-auto md:col-start-1">
+<div>
+<div class="flex items-center gap-sm mb-md">
+<div class="w-12 h-12 rounded bg-surface-container-high flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[32px]" data-icon="terminal">terminal</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Java</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Developing enterprise-grade applications, focusing on object-oriented design principles, multithreading, and Spring Boot microservices.</p>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-sm text-label-sm text-on-surface uppercase">Proficiency</span>
+<span class="font-label-sm text-label-sm text-secondary">80%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="skill-bar h-full bg-gradient-to-r from-primary to-secondary rounded-full" data-width="80%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Other Tools / Capabilities -->
+<section class="mt-xl">
+<h3 class="font-headline-lg text-headline-lg text-primary mb-md">Additional Arsenal</h3>
+<div class="flex flex-wrap gap-sm">
+<span class="px-4 py-2 border border-white/10 rounded-full font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low hover:bg-surface-container transition-colors">PostgreSQL</span>
+<span class="px-4 py-2 border border-white/10 rounded-full font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low hover:bg-surface-container transition-colors">Docker</span>
+<span class="px-4 py-2 border border-white/10 rounded-full font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low hover:bg-surface-container transition-colors">Tailwind CSS</span>
+<span class="px-4 py-2 border border-white/10 rounded-full font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low hover:bg-surface-container transition-colors">Git</span>
+<span class="px-4 py-2 border border-white/10 rounded-full font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low hover:bg-surface-container transition-colors">RESTful APIs</span>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface dark:bg-surface full-width border-t border-white/10 flat no shadows mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 max-w-container-max mx-auto gap-base">
+<div class="font-headline-lg text-headline-lg font-bold text-primary">
+                Iqbaal
+            </div>
+<div class="font-body-md text-body-md text-on-surface-variant text-center md:text-left">
+                © 2024 Mohammad Iqbal. Built with Precision.
+            </div>
+<div class="flex gap-md">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-200 opacity-80 hover:opacity-100" href="#">GitHub</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-200 opacity-80 hover:opacity-100" href="#">LinkedIn</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-200 opacity-80 hover:opacity-100" href="#">Email</a>
+</div>
+</div>
+</footer>
+<script>
+        // Animate skill bars on load
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const bars = document.querySelectorAll('.skill-bar');
+                bars.forEach(bar => {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width;
+                });
+            }, 300); // Slight delay for aesthetic effect
+        });
+    </script>
+</body></html>

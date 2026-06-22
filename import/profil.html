@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohammad Iqbal - Backend Developer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Sora:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#c0c1ff",
+                        "secondary": "#5de6ff",
+                        "outline-variant": "#464554",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#301400",
+                        "on-surface": "#dae2fd",
+                        "primary-container": "#8083ff",
+                        "secondary-container": "#00cbe6",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-primary": "#1000a9",
+                        "on-tertiary": "#4f2500",
+                        "primary-fixed": "#e1e0ff",
+                        "on-secondary": "#00363e",
+                        "on-primary-fixed": "#07006c",
+                        "secondary-fixed-dim": "#2fd9f4",
+                        "surface-tint": "#c0c1ff",
+                        "on-secondary-fixed": "#001f25",
+                        "inverse-on-surface": "#283044",
+                        "secondary-fixed": "#a2eeff",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "on-primary-container": "#0d0096",
+                        "surface-variant": "#2d3449",
+                        "surface-container-low": "#131b2e",
+                        "surface-container": "#171f33",
+                        "on-surface-variant": "#c7c4d7",
+                        "tertiary": "#ffb783",
+                        "surface-bright": "#31394d",
+                        "tertiary-fixed": "#ffdcc5",
+                        "surface-container-high": "#222a3d",
+                        "surface": "#0b1326",
+                        "inverse-primary": "#494bd6",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "tertiary-container": "#d97721",
+                        "on-background": "#dae2fd",
+                        "outline": "#908fa0",
+                        "surface-container-highest": "#2d3449",
+                        "background": "#0b1326",
+                        "surface-container-lowest": "#060e20",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "on-tertiary-container": "#452000",
+                        "inverse-surface": "#dae2fd",
+                        "surface-dim": "#0b1326",
+                        "on-secondary-container": "#00515d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "lg": "48px",
+                        "container-max": "1200px",
+                        "md": "24px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Sora"],
+                        "headline-xl": ["Sora"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Sora"],
+                        "headline-lg": ["Sora"],
+                        "code-md": ["monospace"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "code-md": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar Component -->
+<nav class="bg-surface/80 backdrop-blur-md dark:bg-surface/80 docked full-width top-0 sticky z-50 border-b border-white/10 flat no shadows flex justify-between items-center w-full px-8 py-4 max-w-container-max mx-auto md:px-xl transition-all duration-300" id="main-nav">
+<div class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed-dim">
+            Iqbaal
+        </div>
+<div class="hidden md:flex gap-md items-center">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-sm text-label-sm hover:text-secondary transition-all duration-200" href="#">Profile</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-sm text-label-sm hover:text-secondary transition-all duration-200" href="#">Skills</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-sm text-label-sm hover:text-secondary transition-all duration-200" href="#">Projects</a>
+</div>
+<div class="hidden md:flex items-center">
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm py-2 px-4 rounded-DEFAULT transition-all duration-200 hover:-translate-y-0.5">
+                Contact Me
+            </button>
+</div>
+<button class="md:hidden text-on-surface-variant hover:text-primary p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col justify-center max-w-container-max mx-auto px-5 md:px-xl py-xl w-full">
+<!-- Hero Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-center min-h-[716px]">
+<!-- Text Content -->
+<div class="lg:col-span-7 flex flex-col gap-md order-2 lg:order-1 z-10">
+<div class="fade-up">
+<span class="inline-block bg-surface-variant text-primary px-3 py-1 rounded-full font-label-sm text-label-sm border border-white/10 mb-2">
+                        Backend Developer
+                    </span>
+</div>
+<h1 class="fade-up delay-100 font-headline-lg-mobile md:font-display-lg text-headline-lg-mobile md:text-display-lg text-on-surface">
+                    Mohammad Iqbal <span class="text-primary">(Iqbaal)</span>
+</h1>
+<p class="fade-up delay-200 font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                    Engineering robust, scalable backend systems with precision. Currently expanding my technical foundation in Semester 4 of Teknik Informatika at Politeknik Negeri Malang.
+                </p>
+<div class="fade-up delay-300 flex flex-wrap gap-md mt-4">
+<a class="bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm py-3 px-6 rounded-DEFAULT transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center gap-2" href="#">
+                        View Projects
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</a>
+<a class="border border-outline-variant hover:border-primary text-primary font-label-sm text-label-sm py-3 px-6 rounded-DEFAULT transition-all duration-200 hover:bg-surface-variant/50 inline-flex items-center gap-2" href="#">
+                        Download CV
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">download</span>
+</a>
+</div>
+<!-- Social Links -->
+<div class="fade-up delay-300 flex items-center gap-sm mt-md pt-md border-t border-white/10">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Connect</span>
+<div class="w-8 h-px bg-white/10"></div>
+<a aria-label="GitHub" class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">code</span>
+</a>
+<a aria-label="LinkedIn" class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">work</span>
+</a>
+</div>
+</div>
+<!-- Profile Image / Visual Anchor -->
+<div class="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end fade-up delay-200">
+<div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-full lg:max-w-md aspect-square rounded-xl overflow-hidden border border-white/10 bg-surface-container-low group">
+<div class="absolute inset-0 bg-gradient-to-tr from-surface to-surface-variant opacity-50 z-0"></div>
+<img alt="Mohammad Iqbal Profile Avatar" class="w-full h-full object-cover relative z-10 transition-transform duration-700 group-hover:scale-105" data-alt="A professional, high-quality headshot of a male software engineer, mid-20s, looking confidently at the camera. The background is a sleek, modern, dark-themed tech office space with subtle, soft blue and indigo accent lighting (representing the primary color palette). The lighting on the subject is clean and cinematic, casting a subtle edge light that highlights the structural integrity of the flat, minimalist design aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAVNm2xopEMDA7QMdYf7vrrfHQ-RvOqNx8t41iAhKdLDxmIcKT5F1Wzk7EbOzOZfEJwmsqq9RO2vtLIncuRztxJuDuZC_yCjD5zy8RprAnmx_vhjojZpHnP_G-KBJPeVhvbJtG0K8Yj11s3vy59zP7HTdsFqmGfp5COGrmFCAQOim95G5RtvvkIFsF_q7PTRhH1LbjB3JU9ORI7Feyviz_su2P51fse2vpfv-eTRNxKAI7GUUxj-8tMX2vXvOkHEFGcJJl1Rf5KvkU"/>
+<!-- Decorative technical overlay -->
+<div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-background/90 to-transparent z-20 flex justify-between items-end">
+<div class="font-code-md text-code-md text-primary opacity-80">
+                            { status: "building" }
+                        </div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="bg-surface dark:bg-surface border-t border-white/10 flat no shadows full-width mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 max-w-container-max mx-auto gap-base">
+<div class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed-dim">
+                Iqbaal
+            </div>
+<div class="font-body-md text-body-md text-on-surface-variant">
+                © 2024 Mohammad Iqbal. Built with Precision.
+            </div>
+<div class="flex gap-md">
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-label-sm text-label-sm" href="#">GitHub</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-label-sm text-label-sm" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-label-sm text-label-sm" href="#">Email</a>
+</div>
+</div>
+</footer>
+<script>
+        // Intersection Observer for fade-up animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Run once
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-up').forEach(element => {
+                observer.observe(element);
+            });
+
+            // Minimalist nav scroll effect
+            const nav = document.getElementById('main-nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    nav.classList.add('shadow-[0_4px_30px_rgba(0,0,0,0.1)]');
+                } else {
+                    nav.classList.remove('shadow-[0_4px_30px_rgba(0,0,0,0.1)]');
+                }
+            });
+        });
+    </script>
+</body></html>

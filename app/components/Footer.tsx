@@ -1,0 +1,25 @@
+import Link from 'next/link';
+
+export default function Footer() {
+  return (
+    <footer className="bg-surface border-t border-white/10 w-full">
+      <div className="flex flex-col md:flex-row justify-between items-center w-full px-8 py-4 mx-auto gap-2">
+        <div className="text-base leading-[1.6] text-on-surface-variant text-center md:text-left">
+          © 2024 Mohammad Iqbal. Built with Precision.
+        </div>
+        
+        <div className="flex gap-6">
+          <Link href="#" className="text-sm tracking-wider font-medium text-on-surface-variant hover:text-secondary transition-colors duration-200">
+            GitHub
+          </Link>
+          <Link href="#" className="text-sm tracking-wider font-medium text-on-surface-variant hover:text-secondary transition-colors duration-200">
+            LinkedIn
+          </Link>
+          <Link href="#" className="text-sm tracking-wider font-medium text-on-surface-variant hover:text-secondary transition-colors duration-200">
+            Email
+          </Link>
+        </div>
+      </div>
+    </footer>
+  );
+}
