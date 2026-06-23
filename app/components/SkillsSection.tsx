@@ -1,15 +1,23 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
+
+const HOLD_DURATION = 1200;
 
 export default function SkillsSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [launched, setLaunched] = useState(false);
+
+  const btnRef = useRef<HTMLButtonElement>(null);
+  const holdStartRef = useRef<number | null>(null);
+  const rafRef = useRef<number>(0);
+  const holdingRef = useRef(false);
+  const router = useRouter();
 
   useEffect(() => {
-    // Trigger animations on mount
     setIsVisible(true);
-
-    // Animate skill bars
     const timer = setTimeout(() => {
       const bars = document.querySelectorAll('.skill-bar');
       bars.forEach((bar, index) => {
@@ -21,35 +29,50 @@ export default function SkillsSection() {
         }
       });
     }, 200);
-
     return () => clearTimeout(timer);
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
+  const tick = useCallback(() => {
+    if (!holdingRef.current || holdStartRef.current === null) return;
+    const pct = Math.min(((performance.now() - holdStartRef.current) / HOLD_DURATION) * 100, 100);
+    setProgress(pct);
+    if (pct < 100) {
+      rafRef.current = requestAnimationFrame(tick);
+    } else {
+      holdingRef.current = false;
+      setLaunched(true);
+      
+      const section = document.getElementById('skills-section');
+      if (section) {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(-12px)';
+      }
+      
+      setTimeout(() => router.push('/projects'), 300);
+    }
+  }, [router]);
+
+  const startHold = () => {
+    if (launched) return;
+    holdingRef.current = true;
+    holdStartRef.current = performance.now();
+    rafRef.current = requestAnimationFrame(tick);
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut',
-      },
-    },
+  const endHold = () => {
+    if (holdingRef.current) {
+      holdingRef.current = false;
+      cancelAnimationFrame(rafRef.current);
+      setProgress(0);
+    }
   };
 
   return (
-    <section className="w-full px-8 md:px-16 xl:px-24 py-10">
+    <section 
+      id="skills-section"
+      className="w-full px-8 md:px-16 xl:px-24 py-10"
+      style={{ transition: 'opacity 0.4s ease-out, transform 0.4s ease-out' }}
+    >
       {/* Header with animation */}
       <div 
         className="mb-12 transform transition-all duration-1000"
@@ -213,6 +236,96 @@ export default function SkillsSection() {
             </span>
           ))}
         </div>
+      </div>
+
+      {/* ── Divider ── */}
+      <div
+        className="mt-16 mb-10 flex items-center gap-6"
+        style={{
+          opacity: isVisible ? 1 : 0,
+          transition: 'opacity 0.8s ease-out 1.1s',
+        }}
+      >
+        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        <span className="text-xs tracking-[0.25em] font-medium text-on-surface-variant/40 uppercase select-none">
+          What I've Built
+        </span>
+        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      </div>
+
+      {/* ── Navigate to Projects CTA ── */}
+      <div
+        className="flex flex-col items-center gap-5 pb-12"
+        style={{
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
+          transition: 'all 0.7s ease-out 1.2s',
+        }}
+      >
+        <p className="text-on-surface-variant/50 text-sm tracking-wide text-center">
+          See how these skills translate into real-world systems
+        </p>
+
+        <button
+          ref={btnRef}
+          id="view-projects-btn"
+          onMouseDown={startHold}
+          onMouseUp={endHold}
+          onMouseLeave={endHold}
+          onTouchStart={startHold}
+          onTouchEnd={endHold}
+          aria-label="Hold to navigate to Projects page"
+          className="relative overflow-hidden cursor-pointer select-none"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '10px',
+            padding: '12px 32px',
+            borderRadius: '8px',
+            border: `1px solid rgba(192,193,255,${0.15 + progress * 0.005})`,
+            background: 'transparent',
+            transition: 'border-color 0.2s ease',
+          }}
+        >
+          {/* Fill bar */}
+          <span
+            aria-hidden
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'rgba(192,193,255,0.08)',
+              transformOrigin: 'left',
+              transform: `scaleX(${progress / 100})`,
+              transition: progress === 0 ? 'transform 0.25s ease' : 'none',
+            }}
+          />
+
+          {/* Arrow icon */}
+          <svg
+            className="w-4 h-4 relative z-10"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            style={{
+              color: progress > 0 ? '#c0c1ff' : '#908fa0',
+              transition: 'color 0.3s ease, transform 0.3s ease',
+              transform: launched ? 'translateX(4px)' : 'none',
+            }}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+
+          {/* Label */}
+          <span
+            className="relative z-10 text-sm font-medium tracking-wide min-w-[120px] text-center"
+            style={{
+              color: progress > 0 ? '#c0c1ff' : '#908fa0',
+              transition: 'color 0.2s ease',
+            }}
+          >
+            {launched ? 'Membuka...' : progress > 0 ? `${Math.round(progress)}%` : 'Tahan untuk lanjut'}
+          </span>
+        </button>
       </div>
     </section>
   );
