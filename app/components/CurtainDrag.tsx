@@ -133,18 +133,26 @@ export default function CurtainDrag() {
       {/* Curtain Handle - at bottom */}
       <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-auto">
         <div
-          className="curtain-handle flex flex-col items-center gap-2 px-6 py-4 cursor-grab active:cursor-grabbing hover:opacity-80 transition-opacity group"
+          className="curtain-handle flex flex-col items-center gap-3 px-6 py-4 cursor-grab active:cursor-grabbing hover:opacity-80 transition-opacity group"
         >
-          {/* Handle Bar - pointing up */}
-          <div className="flex gap-2 transform rotate-180">
-            <div className="w-1 h-8 bg-primary/60 rounded-full group-hover:bg-primary transition-colors"></div>
-            <div className="w-1 h-8 bg-primary/60 rounded-full group-hover:bg-primary transition-colors"></div>
-            <div className="w-1 h-8 bg-primary/60 rounded-full group-hover:bg-primary transition-colors"></div>
-          </div>
+          {/* Simple Chevron Icon */}
+          <svg 
+            className="w-6 h-6 text-primary/60 group-hover:text-primary transition-colors animate-bounce"
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth={2} 
+              d="M5 10l7-7m0 0l7 7m-7-7v18" 
+            />
+          </svg>
           
           {/* Hint Text */}
           <span className="text-xs tracking-wider font-medium text-primary/70 uppercase whitespace-nowrap group-hover:text-primary transition-colors">
-            {dragY > 0 ? (dragY > THRESHOLD ? '✓ Release!' : `${Math.round(dragY)}px`) : 'Drag up to explore'}
+            {dragY > 0 ? (dragY > THRESHOLD ? '✓ Release!' : `${Math.round(dragY)}px`) : 'Drag up'}
           </span>
         </div>
       </div>
