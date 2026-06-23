@@ -45,10 +45,11 @@ export default function SkillsSection() {
       const section = document.getElementById('skills-section');
       if (section) {
         section.style.opacity = '0';
-        section.style.transform = 'translateY(-12px)';
+        section.style.transform = 'scale(0.95) translateY(20px)';
       }
       
-      setTimeout(() => router.push('/projects'), 300);
+      window.dispatchEvent(new Event('page-exit'));
+      setTimeout(() => router.push('/projects'), 800);
     }
   }, [router]);
 

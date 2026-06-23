@@ -107,7 +107,7 @@ export default function CurtainDrag() {
         }}
       >
         {/* Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-surface-container via-surface-container to-surface" />
+        <div className="absolute inset-0 bg-background" />
         
         {/* Skills Text */}
         <div
