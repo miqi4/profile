@@ -56,7 +56,7 @@ const iconMap: Record<string, ReactElement> = {
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="h-screen w-full snap-start overflow-y-auto px-8 md:px-16 xl:px-24 py-12">
+    <section className="w-full px-8 md:px-16 xl:px-24 py-8 min-h-[calc(100vh-64px)]">
       <header className="mb-8">
         <h1 className="text-[48px] md:text-[64px] leading-[1.2] md:leading-[1.1] tracking-tight md:tracking-[-0.02em] font-bold mb-4 text-primary font-[family-name:var(--font-family-display)]">
           System Architectures

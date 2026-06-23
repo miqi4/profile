@@ -66,6 +66,7 @@
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
+  overflow: hidden;
 }
 
 body {

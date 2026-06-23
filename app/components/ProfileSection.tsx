@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import CurtainDrag from './CurtainDrag';
 
 export default function ProfileSection() {
   useEffect(() => {
@@ -29,7 +30,8 @@ export default function ProfileSection() {
   }, []);
 
   return (
-    <section id="profile" className="h-screen w-full snap-start flex items-center justify-center px-8 md:px-16 xl:px-24">
+    <section className="w-full flex items-center justify-center px-8 md:px-16 xl:px-24 py-20">
+      <CurtainDrag />
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
         <div className="lg:col-span-7 flex flex-col gap-6 order-2 lg:order-1 z-10">
           <div className="fade-up opacity-0 translate-y-5 transition-all duration-700">
@@ -48,7 +50,7 @@ export default function ProfileSection() {
           
           <div className="fade-up opacity-0 translate-y-5 transition-all duration-700 delay-300 flex flex-wrap gap-6 mt-4">
             <a 
-              href="#projects" 
+              href="/projects" 
               className="bg-primary hover:bg-primary-container text-on-primary text-sm tracking-wider font-medium py-3 px-6 rounded transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center gap-2"
             >
               View Projects

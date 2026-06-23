@@ -1,38 +1,94 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function SkillsSection() {
+  const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
-    setTimeout(() => {
+    // Trigger animations on mount
+    setIsVisible(true);
+
+    // Animate skill bars
+    const timer = setTimeout(() => {
       const bars = document.querySelectorAll('.skill-bar');
-      bars.forEach(bar => {
+      bars.forEach((bar, index) => {
         const width = bar.getAttribute('data-width');
         if (width) {
-          (bar as HTMLElement).style.width = width;
+          setTimeout(() => {
+            (bar as HTMLElement).style.width = width;
+          }, index * 100);
         }
       });
-    }, 300);
+    }, 200);
+
+    return () => clearTimeout(timer);
   }, []);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut',
+      },
+    },
+  };
+
   return (
-    <section id="skills" className="h-screen w-full snap-start overflow-y-auto px-8 md:px-16 xl:px-24 py-12">
-      <div className="mb-12">
+    <section className="w-full px-8 md:px-16 xl:px-24 py-10">
+      {/* Header with animation */}
+      <div 
+        className="mb-12 transform transition-all duration-1000"
+        style={{
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+        }}
+      >
         <div className="max-w-3xl">
-          <h1 className="text-[28px] md:text-[48px] leading-[1.3] md:leading-[1.2] tracking-tight md:tracking-[-0.01em] font-semibold text-primary mb-3 font-[family-name:var(--font-family-display)]">
+          <h1 className="text-[28px] md:text-[48px] leading-[1.3] md:leading-[1.2] tracking-tight md:tracking-[-0.01em] font-semibold text-primary mb-3 font-[family-name:var(--font-family-display)] animate-in fade-in slide-in-from-top-4 duration-700">
             Technical Proficiency
           </h1>
-          <p className="text-lg leading-relaxed text-on-surface-variant">
+          <p className="text-lg leading-relaxed text-on-surface-variant animate-in fade-in slide-in-from-top-6 duration-700 delay-100">
             A comprehensive overview of my core engineering capabilities, emphasizing robust backend architectures and modern frontend frameworks.
           </p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        <div className="skill-card bg-surface-container border border-white/10 rounded-lg p-6 transition-all duration-300 flex flex-col justify-between h-full hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(192,193,255,0.1)]">
+      {/* Skill Cards Grid */}
+      <div 
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
+        style={{
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
+          transition: 'all 0.8s ease-out 0.3s',
+        }}
+      >
+        {/* Next.js Card */}
+        <div 
+          className="skill-card bg-surface-container border border-white/10 rounded-lg p-6 transition-all duration-300 flex flex-col justify-between h-full hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(192,193,255,0.1)] hover:-translate-y-1 transform"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0) rotateX(0deg)' : 'translateY(20px) rotateX(10deg)',
+            transition: 'all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s',
+          }}
+        >
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded bg-surface-container-high flex items-center justify-center text-primary">
+              <div className="w-12 h-12 rounded bg-surface-container-high flex items-center justify-center text-primary transform transition-transform duration-500 hover:rotate-12 hover:scale-110">
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
@@ -57,10 +113,18 @@ export default function SkillsSection() {
           </div>
         </div>
 
-        <div className="skill-card bg-surface-container border border-white/10 rounded-lg p-6 transition-all duration-300 flex flex-col justify-between h-full hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(192,193,255,0.1)]">
+        {/* Laravel Card */}
+        <div 
+          className="skill-card bg-surface-container border border-white/10 rounded-lg p-6 transition-all duration-300 flex flex-col justify-between h-full hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(192,193,255,0.1)] hover:-translate-y-1 transform"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0) rotateX(0deg)' : 'translateY(20px) rotateX(10deg)',
+            transition: 'all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s',
+          }}
+        >
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded bg-surface-container-high flex items-center justify-center text-error">
+              <div className="w-12 h-12 rounded bg-surface-container-high flex items-center justify-center text-error transform transition-transform duration-500 hover:rotate-12 hover:scale-110">
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
@@ -85,10 +149,18 @@ export default function SkillsSection() {
           </div>
         </div>
 
-        <div className="skill-card bg-surface-container border border-white/10 rounded-lg p-6 transition-all duration-300 flex flex-col justify-between h-full lg:col-span-1 md:col-span-2 lg:col-start-auto md:col-start-1 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(192,193,255,0.1)]">
+        {/* Java Card */}
+        <div 
+          className="skill-card bg-surface-container border border-white/10 rounded-lg p-6 transition-all duration-300 flex flex-col justify-between h-full lg:col-span-1 md:col-span-2 lg:col-start-auto md:col-start-1 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(192,193,255,0.1)] hover:-translate-y-1 transform"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0) rotateX(0deg)' : 'translateY(20px) rotateX(10deg)',
+            transition: 'all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s',
+          }}
+        >
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded bg-surface-container-high flex items-center justify-center text-tertiary">
+              <div className="w-12 h-12 rounded bg-surface-container-high flex items-center justify-center text-tertiary transform transition-transform duration-500 hover:rotate-12 hover:scale-110">
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
@@ -114,13 +186,28 @@ export default function SkillsSection() {
         </div>
       </div>
 
-      <div className="mt-12">
-        <h3 className="text-[32px] leading-[1.3] font-semibold text-primary mb-6 font-[family-name:var(--font-family-display)]">Additional Arsenal</h3>
+      {/* Additional Arsenal Section */}
+      <div 
+        className="mt-12 transform transition-all duration-1000"
+        style={{
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+          transitionDelay: '0.6s',
+        }}
+      >
+        <h3 className="text-[32px] leading-[1.3] font-semibold text-primary mb-6 font-[family-name:var(--font-family-display)] animate-in fade-in slide-in-from-left-4 duration-700 delay-700">
+          Additional Arsenal
+        </h3>
         <div className="flex flex-wrap gap-3">
-          {['PostgreSQL', 'Docker', 'Tailwind CSS', 'Git', 'RESTful APIs'].map((tech) => (
+          {['PostgreSQL', 'Docker', 'Tailwind CSS', 'Git', 'RESTful APIs'].map((tech, index) => (
             <span 
               key={tech}
-              className="px-4 py-2 border border-white/10 rounded-full text-sm tracking-wider font-medium text-on-surface-variant bg-surface-container-low hover:bg-surface-container transition-colors"
+              className="px-4 py-2 border border-white/10 rounded-full text-sm tracking-wider font-medium text-on-surface-variant bg-surface-container-low hover:bg-surface-container hover:border-primary hover:text-primary transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 cursor-pointer"
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(10px) scale(0.9)',
+                transition: `all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${0.7 + index * 0.08}s`,
+              }}
             >
               {tech}
             </span>

@@ -30,9 +30,9 @@ export default function RootLayout({
     <html lang="en" className={`dark ${inter.variable} ${sora.variable}`}>
       <body className="h-screen w-screen flex flex-col antialiased overflow-hidden">
         <Header />
-        <div className="flex-1 overflow-y-auto">
+        <main className="flex-1 overflow-y-auto">
           {children}
-        </div>
+        </main>
         <Footer />
       </body>
     </html>
