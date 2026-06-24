@@ -1,10 +1,58 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import CurtainDrag from './CurtainDrag';
 
 export default function ProfileSection() {
+  const [progress, setProgress] = useState(0);
+  const [launched, setLaunched] = useState(false);
+
+  const btnRef = useRef<HTMLButtonElement>(null);
+  const holdStartRef = useRef<number | null>(null);
+  const rafRef = useRef<number>(0);
+  const holdingRef = useRef(false);
+  const router = useRouter();
+
+  const HOLD_DURATION = 1200;
+
+  function tick() {
+    if (!holdingRef.current || holdStartRef.current === null) return;
+    const pct = Math.min(((performance.now() - holdStartRef.current) / HOLD_DURATION) * 100, 100);
+    setProgress(pct);
+    if (pct < 100) {
+      rafRef.current = requestAnimationFrame(tick);
+    } else {
+      holdingRef.current = false;
+      setLaunched(true);
+      
+      const section = document.getElementById('profile-section');
+      if (section) {
+        section.style.opacity = '0';
+        section.style.transform = 'scale(0.95) translateY(20px)';
+      }
+      
+      window.dispatchEvent(new Event('page-exit'));
+      setTimeout(() => router.push('/skills'), 800);
+    }
+  }
+
+  const startHold = () => {
+    if (launched) return;
+    holdingRef.current = true;
+    holdStartRef.current = performance.now();
+    rafRef.current = requestAnimationFrame(tick);
+  };
+
+  const endHold = () => {
+    if (holdingRef.current) {
+      holdingRef.current = false;
+      cancelAnimationFrame(rafRef.current);
+      setProgress(0);
+    }
+  };
+
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -29,7 +77,11 @@ export default function ProfileSection() {
   }, []);
 
   return (
-    <section className="w-full flex items-center justify-center px-5 sm:px-8 md:px-16 xl:px-24 py-12 md:py-20">
+    <section 
+      id="profile-section"
+      className="w-full flex flex-col items-center justify-center px-5 sm:px-8 md:px-16 xl:px-24 py-12 md:py-20"
+      style={{ transition: 'opacity 0.4s ease-out, transform 0.4s ease-out' }}
+    >
       <CurtainDrag />
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
         <div className="lg:col-span-7 flex flex-col gap-6 order-2 lg:order-1 z-10">
@@ -111,6 +163,78 @@ export default function ProfileSection() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* ── Divider ── */}
+      <div className="w-full mt-24 mb-10 flex items-center gap-6 fade-up opacity-0 translate-y-5 transition-all duration-700 delay-500">
+        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        <span className="text-xs tracking-[0.25em] font-medium text-on-surface-variant/40 uppercase select-none text-center">
+          Explore My Expertise
+        </span>
+        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      </div>
+
+      {/* ── Navigate to Skills CTA ── */}
+      <div className="flex flex-col items-center gap-5 pb-12 fade-up opacity-0 translate-y-5 transition-all duration-700 delay-[600ms]">
+        <p className="text-on-surface-variant/50 text-sm tracking-wide text-center">
+          Discover the technologies I work with
+        </p>
+
+        <button
+          ref={btnRef}
+          id="view-skills-btn"
+          onMouseDown={startHold}
+          onMouseUp={endHold}
+          onMouseLeave={endHold}
+          onTouchStart={startHold}
+          onTouchEnd={endHold}
+          aria-label="Hold to navigate to Skills page"
+          className="relative overflow-hidden cursor-pointer select-none"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '10px',
+            padding: '12px 32px',
+            borderRadius: '8px',
+            border: `1px solid rgba(192,193,255,${0.15 + progress * 0.005})`,
+            background: 'transparent',
+            transition: 'border-color 0.2s ease',
+          }}
+        >
+          <span
+            aria-hidden
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'rgba(192,193,255,0.08)',
+              transformOrigin: 'left',
+              transform: `scaleX(${progress / 100})`,
+              transition: progress === 0 ? 'transform 0.25s ease' : 'none',
+            }}
+          />
+          <svg
+            className="w-4 h-4 relative z-10"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            style={{
+              color: progress > 0 ? '#c0c1ff' : '#908fa0',
+              transition: 'color 0.3s ease, transform 0.3s ease',
+              transform: launched ? 'translateX(4px)' : 'none',
+            }}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+          <span
+            className="relative z-10 text-sm font-medium tracking-wide min-w-[120px] text-center"
+            style={{
+              color: progress > 0 ? '#c0c1ff' : '#908fa0',
+              transition: 'color 0.2s ease',
+            }}
+          >
+            {launched ? 'Membuka...' : progress > 0 ? `${Math.round(progress)}%` : 'Tahan untuk lanjut'}
+          </span>
+        </button>
       </div>
 
       <style jsx>{`
