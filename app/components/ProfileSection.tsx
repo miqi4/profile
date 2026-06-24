@@ -30,11 +30,13 @@ export default function ProfileSection() {
       const section = document.getElementById('profile-section');
       if (section) {
         section.style.opacity = '0';
-        section.style.transform = 'scale(0.95) translateY(20px)';
+        section.style.transform = 'scale(1.1) translateY(-40px)';
+        section.style.filter = 'blur(12px)';
+        section.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
       }
       
       window.dispatchEvent(new Event('page-exit'));
-      setTimeout(() => router.push('/skills'), 800);
+      setTimeout(() => router.push('/skills'), 600);
     }
   }
 
