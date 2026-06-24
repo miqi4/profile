@@ -29,7 +29,7 @@ export default function ProfileSection() {
   }, []);
 
   return (
-    <section className="w-full flex items-center justify-center px-8 md:px-16 xl:px-24 py-20">
+    <section className="w-full flex items-center justify-center px-5 sm:px-8 md:px-16 xl:px-24 py-12 md:py-20">
       <CurtainDrag />
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
         <div className="lg:col-span-7 flex flex-col gap-6 order-2 lg:order-1 z-10">
@@ -39,8 +39,8 @@ export default function ProfileSection() {
             </span>
           </div>
           
-          <h1 className="fade-up opacity-0 translate-y-5 transition-all duration-700 delay-100 text-[28px] md:text-[64px] leading-[1.3] md:leading-[1.1] tracking-tight md:tracking-[-0.02em] font-bold text-on-surface font-[family-name:var(--font-family-display)]">
-            Mohammad Iqbal <span className="text-primary">(Iqbaal)</span>
+          <h1 className="fade-up opacity-0 translate-y-5 transition-all duration-700 delay-100 text-[32px] sm:text-[48px] lg:text-[64px] leading-[1.3] md:leading-[1.1] tracking-tight md:tracking-[-0.02em] font-bold text-on-surface font-[family-name:var(--font-family-display)]">
+            Mohammad Iqbal <br className="hidden sm:block" /><span className="text-primary">(Iqbaal)</span>
           </h1>
           
           <p className="fade-up opacity-0 translate-y-5 transition-all duration-700 delay-200 text-lg leading-relaxed text-on-surface-variant max-w-2xl">
@@ -50,7 +50,7 @@ export default function ProfileSection() {
           <div className="fade-up opacity-0 translate-y-5 transition-all duration-700 delay-300 flex flex-wrap gap-6 mt-4">
             <a 
               href="/projects" 
-              className="bg-primary hover:bg-primary-container text-on-primary text-sm tracking-wider font-medium py-3 px-6 rounded transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center gap-2"
+              className="bg-primary hover:bg-primary-container text-on-primary text-sm tracking-wider font-medium py-3 px-6 rounded transition-all duration-200 hover:-translate-y-0.5 inline-flex justify-center items-center gap-2 w-full sm:w-auto"
             >
               View Projects
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,7 +60,7 @@ export default function ProfileSection() {
             
             <a 
               href="#" 
-              className="border border-outline-variant hover:border-primary text-primary text-sm tracking-wider font-medium py-3 px-6 rounded transition-all duration-200 hover:bg-surface-variant/50 inline-flex items-center gap-2"
+              className="border border-outline-variant hover:border-primary text-primary text-sm tracking-wider font-medium py-3 px-6 rounded transition-all duration-200 hover:bg-surface-variant/50 inline-flex justify-center items-center gap-2 w-full sm:w-auto"
             >
               Download CV
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -94,7 +94,7 @@ export default function ProfileSection() {
         </div>
 
         <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end fade-up opacity-0 translate-y-5 transition-all duration-700 delay-200">
-          <div className="relative w-80 h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] aspect-square rounded-xl overflow-hidden border border-white/10 bg-surface-container-low group">
+          <div className="relative w-[280px] h-[280px] sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] aspect-square rounded-xl overflow-hidden border border-white/10 bg-surface-container-low group">
             <div className="absolute inset-0 bg-gradient-to-tr from-surface to-surface-variant opacity-50 z-0"></div>
             <Image 
               alt="Mohammad Iqbal Profile" 

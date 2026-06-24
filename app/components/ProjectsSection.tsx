@@ -56,9 +56,9 @@ const iconMap: Record<string, ReactElement> = {
 
 export default function ProjectsSection() {
   return (
-    <section className="w-full px-8 md:px-16 xl:px-24 py-8 min-h-[calc(100vh-64px)]">
+    <section className="w-full px-5 sm:px-8 md:px-16 xl:px-24 py-8 min-h-[calc(100vh-64px)]">
       <header className="mb-8">
-        <h1 className="text-[48px] md:text-[64px] leading-[1.2] md:leading-[1.1] tracking-tight md:tracking-[-0.02em] font-bold mb-4 text-primary font-[family-name:var(--font-family-display)]">
+        <h1 className="text-[32px] sm:text-[48px] lg:text-[64px] leading-[1.2] md:leading-[1.1] tracking-tight md:tracking-[-0.02em] font-bold mb-4 text-primary font-[family-name:var(--font-family-display)]">
           System Architectures
         </h1>
         <p className="text-lg leading-relaxed text-on-surface-variant max-w-2xl">
@@ -73,7 +73,7 @@ export default function ProjectsSection() {
             className={`${project.span} bg-surface-container border border-white/10 rounded-lg p-6 flex flex-col h-full cursor-pointer transition-all duration-200 hover:translate-y-[-2px] hover:scale-[1.02] hover:bg-surface-container-high`}
           >
             <div className="flex justify-between items-start mb-3">
-              <h2 className="text-[32px] leading-[1.3] font-semibold text-primary-fixed font-[family-name:var(--font-family-display)]">
+              <h2 className="text-[24px] sm:text-[28px] lg:text-[32px] leading-[1.3] font-semibold text-primary-fixed font-[family-name:var(--font-family-display)]">
                 {project.title}
               </h2>
               <span className="text-secondary">
