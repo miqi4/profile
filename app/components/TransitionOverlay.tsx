@@ -17,12 +17,16 @@ export default function TransitionOverlay() {
     // When pathname changes and we are currently covering the screen (exiting)
     if (state === 'exiting') {
       // Start the reveal animation
-      setState('entering');
+      const initT = setTimeout(() => setState('entering'), 0);
       const t = setTimeout(() => {
         setState('idle'); // Reset back to bottom instantly (hidden)
       }, 800); // 800ms reveal animation
-      return () => clearTimeout(t);
+      return () => {
+        clearTimeout(initT);
+        clearTimeout(t);
+      };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   // Determine translation based on state

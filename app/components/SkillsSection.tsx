@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 
 const HOLD_DURATION = 1200;
@@ -17,7 +17,7 @@ export default function SkillsSection() {
   const router = useRouter();
 
   useEffect(() => {
-    setIsVisible(true);
+    const initTimer = setTimeout(() => setIsVisible(true), 0);
     const timer = setTimeout(() => {
       const bars = document.querySelectorAll('.skill-bar');
       bars.forEach((bar, index) => {
@@ -29,10 +29,13 @@ export default function SkillsSection() {
         }
       });
     }, 200);
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(initTimer);
+    };
   }, []);
 
-  const tick = useCallback(() => {
+  function tick() {
     if (!holdingRef.current || holdStartRef.current === null) return;
     const pct = Math.min(((performance.now() - holdStartRef.current) / HOLD_DURATION) * 100, 100);
     setProgress(pct);
@@ -51,7 +54,7 @@ export default function SkillsSection() {
       window.dispatchEvent(new Event('page-exit'));
       setTimeout(() => router.push('/projects'), 800);
     }
-  }, [router]);
+  }
 
   const startHold = () => {
     if (launched) return;
@@ -130,7 +133,7 @@ export default function SkillsSection() {
             </div>
             <div className="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
               <div 
-                className="skill-bar h-full bg-gradient-to-r from-primary to-secondary rounded-full w-0 transition-all duration-[1500ms] ease-[cubic-bezier(0.4,0,0.2,1)]" 
+                className="skill-bar h-full bg-primary rounded-full w-0 transition-all duration-[1500ms] ease-[cubic-bezier(0.4,0,0.2,1)]" 
                 data-width="90%"
               ></div>
             </div>
@@ -166,7 +169,7 @@ export default function SkillsSection() {
             </div>
             <div className="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
               <div 
-                className="skill-bar h-full bg-gradient-to-r from-primary to-secondary rounded-full w-0 transition-all duration-[1500ms] ease-[cubic-bezier(0.4,0,0.2,1)]" 
+                className="skill-bar h-full bg-primary rounded-full w-0 transition-all duration-[1500ms] ease-[cubic-bezier(0.4,0,0.2,1)]" 
                 data-width="85%"
               ></div>
             </div>
@@ -202,7 +205,7 @@ export default function SkillsSection() {
             </div>
             <div className="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
               <div 
-                className="skill-bar h-full bg-gradient-to-r from-primary to-secondary rounded-full w-0 transition-all duration-[1500ms] ease-[cubic-bezier(0.4,0,0.2,1)]" 
+                className="skill-bar h-full bg-primary rounded-full w-0 transition-all duration-[1500ms] ease-[cubic-bezier(0.4,0,0.2,1)]" 
                 data-width="80%"
               ></div>
             </div>
@@ -249,7 +252,7 @@ export default function SkillsSection() {
       >
         <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
         <span className="text-xs tracking-[0.25em] font-medium text-on-surface-variant/40 uppercase select-none">
-          What I've Built
+          What I&apos;ve Built
         </span>
         <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       </div>

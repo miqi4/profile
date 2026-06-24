@@ -17,7 +17,7 @@ export default function CurtainDrag() {
   useEffect(() => {
     const curtain = curtainRef.current;
     const content = contentRef.current;
-    const handle = document.querySelector('.curtain-handle');
+    const handle = document.querySelector('.curtain-handle') as HTMLElement | null;
     if (!curtain || !content || !handle) return;
 
     const handleMouseDown = (e: MouseEvent) => {
