@@ -9,6 +9,7 @@ export default function CurtainDrag() {
   const contentRef = useRef<HTMLDivElement>(null);
   const skillsTextRef = useRef<HTMLHeadingElement>(null);
   const startYRef = useRef(0);
+  const dragYRef = useRef(0);
   const [isDragging, setIsDragging] = useState(false);
   const [dragY, setDragY] = useState(0);
 
@@ -24,6 +25,7 @@ export default function CurtainDrag() {
       startYRef.current = e.clientY;
       setIsDragging(true);
       setDragY(0);
+      dragYRef.current = 0;
       if (curtain) {
         curtain.style.transition = 'none';
         curtain.style.opacity = '1';
@@ -38,6 +40,7 @@ export default function CurtainDrag() {
 
       if (diff > 0) {
         setDragY(diff);
+        dragYRef.current = diff;
         const closePercent = Math.min((diff / THRESHOLD) * 100, 100);
         curtain.style.transform = `scaleY(${closePercent / 100})`;
         content.style.opacity = `${closePercent / 100}`;
@@ -45,7 +48,7 @@ export default function CurtainDrag() {
     };
 
     const handleMouseUp = () => {
-      const currentDragY = startYRef.current;
+      const currentDragY = dragYRef.current;
       if (currentDragY > THRESHOLD) {
         if (curtain && content) {
           curtain.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
@@ -82,6 +85,7 @@ export default function CurtainDrag() {
       setIsDragging(false);
       setDragY(0);
       startYRef.current = 0;
+      dragYRef.current = 0;
     };
 
     handle.addEventListener('mousedown', handleMouseDown);
@@ -101,7 +105,7 @@ export default function CurtainDrag() {
       {/* Curtain Container - from bottom, covering upward */}
       <div
         ref={curtainRef}
-        className="fixed inset-0 bottom-0 z-40 origin-bottom pointer-events-none overflow-hidden"
+        className="hidden md:block fixed inset-0 bottom-0 z-40 origin-bottom pointer-events-none overflow-hidden"
         style={{ 
           transformOrigin: 'bottom',
           opacity: 0,
@@ -134,7 +138,7 @@ export default function CurtainDrag() {
       </div>
 
       {/* Curtain Handle - at bottom */}
-      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-auto">
+      <div className="hidden md:block fixed bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-auto">
         <div
           className="curtain-handle flex flex-col items-center gap-3 px-6 py-4 cursor-grab active:cursor-grabbing hover:opacity-80 transition-opacity group"
         >

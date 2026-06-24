@@ -14,6 +14,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
   return (
     <div
+      className="h-full"
       style={{
         opacity: mounted ? 1 : 0,
         transform: mounted ? 'translateY(0)' : 'translateY(12px)',
