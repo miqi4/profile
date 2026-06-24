@@ -31,7 +31,7 @@ export default function CurtainDrag() {
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      if (!isDragging || !curtain) return;
+      if (!startYRef.current || !curtain) return;
 
       const currentY = e.clientY;
       const diff = startYRef.current - currentY;
@@ -45,7 +45,8 @@ export default function CurtainDrag() {
     };
 
     const handleMouseUp = () => {
-      if (isDragging && dragY > THRESHOLD) {
+      const currentDragY = startYRef.current;
+      if (currentDragY > THRESHOLD) {
         if (curtain && content) {
           curtain.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
           curtain.style.transform = 'scaleY(1)';
@@ -64,7 +65,6 @@ export default function CurtainDrag() {
           }, 300);
         }
       } else {
-        setDragY(0);
         if (curtain && content) {
           curtain.style.transition = 'all 0.3s ease-out';
           curtain.style.transform = 'scaleY(0)';
@@ -80,6 +80,8 @@ export default function CurtainDrag() {
         }
       }
       setIsDragging(false);
+      setDragY(0);
+      startYRef.current = 0;
     };
 
     handle.addEventListener('mousedown', handleMouseDown);
@@ -91,7 +93,8 @@ export default function CurtainDrag() {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [isDragging, dragY, router]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
