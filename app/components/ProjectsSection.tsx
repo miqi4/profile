@@ -9,21 +9,21 @@ const projects = [
     span: "col-span-1 md:col-span-2 lg:col-span-2"
   },
   {
-    title: "Web Profile Lab Business Analytic",
+    title: "Laboratory Business Analytics Website",
     icon: "database",
     description: "A comprehensive business analytics dashboard for laboratory operations. Built with native PHP and MySQL, providing real-time insights on data analysis, reporting, and business metrics management.",
     tags: ["PHP", "MySQL", "Bootstrap"],
     span: "col-span-1"
   },
   {
-    title: "Web Digital Printing",
+    title: "Digital Printing Website",
     icon: "printer",
     description: "Full-featured digital printing management system with order processing, inventory tracking, and customer management. Built with Laravel framework and Filament admin panel for seamless operations.",
     tags: ["Laravel", "Filament", "MySQL", "PHP"],
     span: "col-span-1"
   },
   {
-    title: "Web Online Ticket Bus",
+    title: "Bus Ticket Booking Website",
     icon: "bus",
     description: "A sophisticated online bus ticketing platform enabling passengers to search, book, and manage reservations. Developed with Laravel and Filament for robust backend operations and intuitive admin interface.",
     tags: ["Laravel", "Filament", "MySQL", "PHP"],
