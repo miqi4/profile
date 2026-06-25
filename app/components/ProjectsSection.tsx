@@ -2,54 +2,54 @@ import { ReactElement } from 'react';
 
 const projects = [
   {
-    title: "Distributed Ledger API",
-    icon: "database",
-    description: "A high-throughput, fault-tolerant ledger system built in Go. Designed to handle 10,000+ TPS with event-sourced architecture and eventual consistency guarantees.",
-    tags: ["Go", "Kafka", "PostgreSQL", "gRPC"],
+    title: "Portofolio Profile Web",
+    icon: "code",
+    description: "A modern personal portfolio website showcasing projects, skills, and experience. Built with Next.js for optimal performance and SEO with server-side rendering, featuring smooth page transitions and responsive design.",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     span: "col-span-1 md:col-span-2 lg:col-span-2"
   },
   {
-    title: "AuthMicro",
-    icon: "lock",
-    description: "A secure, stateless authentication microservice implementing OAuth2.0 and JWT with Redis-backed token revocation.",
-    tags: ["Node.js", "Redis", "Docker"],
+    title: "Web Profile Lab Business Analytic",
+    icon: "database",
+    description: "A comprehensive business analytics dashboard for laboratory operations. Built with native PHP and MySQL, providing real-time insights on data analysis, reporting, and business metrics management.",
+    tags: ["PHP", "MySQL", "Bootstrap"],
     span: "col-span-1"
   },
   {
-    title: "GraphSearch Engine",
-    icon: "hub",
-    description: "Custom search indexing engine utilizing GraphQL for complex relational querying over disparate datastores.",
-    tags: ["Python", "GraphQL", "Neo4j"],
+    title: "Web Digital Printing",
+    icon: "printer",
+    description: "Full-featured digital printing management system with order processing, inventory tracking, and customer management. Built with Laravel framework and Filament admin panel for seamless operations.",
+    tags: ["Laravel", "Filament", "MySQL", "PHP"],
     span: "col-span-1"
   },
   {
-    title: "Infrastructure as Code Suite",
-    icon: "cloud",
-    description: "A comprehensive set of Terraform modules defining a scalable, multi-region AWS environment. Includes automated CI/CD pipeline definitions and disaster recovery protocols.",
-    tags: ["Terraform", "AWS", "GitHub Actions"],
+    title: "Web Online Ticket Bus",
+    icon: "bus",
+    description: "A sophisticated online bus ticketing platform enabling passengers to search, book, and manage reservations. Developed with Laravel and Filament for robust backend operations and intuitive admin interface.",
+    tags: ["Laravel", "Filament", "MySQL", "PHP"],
     span: "col-span-1 md:col-span-2 lg:col-span-2"
   }
 ];
 
 const iconMap: Record<string, ReactElement> = {
+  code: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+    </svg>
+  ),
   database: (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
     </svg>
   ),
-  lock: (
+  printer: (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm-6-4h.01M7 20h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v13a2 2 0 002 2z" />
     </svg>
   ),
-  hub: (
+  bus: (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-    </svg>
-  ),
-  cloud: (
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12a2 2 0 012 2v10a2 2 0 01-2 2H8a2 2 0 01-2-2V9a2 2 0 012-2zM8 9v6m4-6v6m4-6v6M9 19h6" />
     </svg>
   )
 };
@@ -59,10 +59,10 @@ export default function ProjectsSection() {
     <section className="w-full px-5 sm:px-8 md:px-16 xl:px-24 py-8 min-h-[calc(100vh-64px)]">
       <header className="mb-8">
         <h1 className="text-[32px] sm:text-[48px] lg:text-[64px] leading-[1.2] md:leading-[1.1] tracking-tight md:tracking-[-0.02em] font-bold mb-4 text-primary font-[family-name:var(--font-family-display)]">
-          System Architectures
+          Featured Projects
         </h1>
         <p className="text-lg leading-relaxed text-on-surface-variant max-w-2xl">
-          A curated gallery of robust, scalable backend systems and robust infrastructure projects engineered for high performance.
+          A selection of projects I've built with modern web technologies, combining Next.js, Laravel, PHP, and MySQL for robust and scalable applications.
         </p>
       </header>
 

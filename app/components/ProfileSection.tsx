@@ -98,7 +98,7 @@ export default function ProfileSection() {
           </h1>
           
           <p className="fade-up opacity-0 translate-y-5 transition-all duration-700 delay-200 text-lg leading-relaxed text-on-surface-variant max-w-2xl">
-            Engineering robust, scalable backend systems with precision. Currently expanding my technical foundation in Semester 4 of Teknik Informatika at Politeknik Negeri Malang.
+            An Informatics Engineering student focused on software and web development, with a strong understanding of programming logic and problem-solving. Ready to grow and contribute as a Junior Developer.
           </p>
           
           <div className="fade-up opacity-0 translate-y-5 transition-all duration-700 delay-300 flex flex-wrap gap-6 mt-4">
@@ -127,7 +127,9 @@ export default function ProfileSection() {
             <span className="text-sm tracking-wider text-on-surface-variant uppercase">Connect</span>
             <div className="w-8 h-px bg-white/10"></div>
             <a 
-              href="#" 
+              href="https://github.com/miqi4" 
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="GitHub" 
               className="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-variant"
             >
@@ -136,7 +138,9 @@ export default function ProfileSection() {
               </svg>
             </a>
             <a 
-              href="#" 
+              href="https://www.linkedin.com/in/mohammad-iqbal-766023386/" 
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="LinkedIn" 
               className="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-variant"
             >
@@ -148,21 +152,15 @@ export default function ProfileSection() {
         </div>
 
         <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end fade-up opacity-0 translate-y-5 transition-all duration-700 delay-200">
-          <div className="relative w-[280px] h-[280px] sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] aspect-square rounded-xl overflow-hidden border border-white/10 bg-surface-container-low group">
-            <div className="absolute inset-0 bg-gradient-to-tr from-surface to-surface-variant opacity-50 z-0"></div>
+          <div className="relative w-[280px] h-[280px] sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] aspect-square rounded-2xl overflow-hidden border-2 border-white/20 bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm group shadow-2xl shadow-primary/10">
             <Image 
               alt="Mohammad Iqbal Profile" 
-              src="/profil.jpg"
+              src="/profil.png"
               width={800}
               height={800}
-              className="w-full h-full object-cover relative z-10 transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-full object-contain relative z-10 transition-transform duration-700 group-hover:scale-105 p-4"
               priority
             />
-            <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-background/90 to-transparent z-20 flex justify-between items-end">
-              <div className="font-mono text-sm text-primary opacity-80">
-                {`{ status: "building" }`}
-              </div>
-            </div>
           </div>
         </div>
       </div>
