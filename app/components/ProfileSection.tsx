@@ -152,13 +152,13 @@ export default function ProfileSection() {
         </div>
 
         <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end fade-up opacity-0 translate-y-5 transition-all duration-700 delay-200">
-          <div className="relative w-[280px] h-[280px] sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] aspect-square rounded-2xl overflow-hidden border-2 border-white/20 bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm group shadow-2xl shadow-primary/10">
+          <div className="relative w-[280px] h-[280px] sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] aspect-square rounded-xl overflow-hidden border border-white/15 group hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20">
             <Image 
               alt="Mohammad Iqbal Profile" 
-              src="/profil.png"
+              src="/profil.jpg"
               width={800}
               height={800}
-              className="w-full h-full object-contain relative z-10 transition-transform duration-700 group-hover:scale-105 p-4"
+              className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
               priority
             />
           </div>
