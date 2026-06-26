@@ -11,7 +11,7 @@ export default function Header() {
   const getActiveSection = () => {
     if (pathname === '/') return 'profile';
     if (pathname === '/skills') return 'skills';
-    if (pathname === '/projects') return 'projects';
+    if (pathname.startsWith('/projects')) return 'projects';
     return 'profile';
   };
 
@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <header className="bg-surface/80 backdrop-blur-md sticky top-0 z-50 border-b border-white/10 w-full flex-shrink-0">
       <div className="flex justify-between items-center w-full px-5 sm:px-8 py-4 mx-auto">
-        <Link 
+        <Link
           href="/"
           className="text-[32px] leading-[1.3] font-semibold text-primary font-[family-name:var(--font-family-display)] hover:opacity-80 transition-opacity"
         >
@@ -28,11 +28,11 @@ export default function Header() {
         </Link>
 
         <nav className="hidden md:flex gap-6 items-center">
-          <Link 
+          <Link
             href="/"
             className={`text-sm tracking-wider font-medium relative transition-colors duration-200 ${
-              activeSection === 'profile' 
-                ? 'text-primary font-bold' 
+              activeSection === 'profile'
+                ? 'text-primary font-bold'
                 : 'text-on-surface-variant hover:text-secondary'
             }`}
           >
@@ -41,11 +41,11 @@ export default function Header() {
               <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"></div>
             )}
           </Link>
-          <Link 
+          <Link
             href="/skills"
             className={`text-sm tracking-wider font-medium relative transition-colors duration-200 ${
-              activeSection === 'skills' 
-                ? 'text-primary font-bold' 
+              activeSection === 'skills'
+                ? 'text-primary font-bold'
                 : 'text-on-surface-variant hover:text-secondary'
             }`}
           >
@@ -54,11 +54,11 @@ export default function Header() {
               <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"></div>
             )}
           </Link>
-          <Link 
+          <Link
             href="/projects"
             className={`text-sm tracking-wider font-medium relative transition-colors duration-200 ${
-              activeSection === 'projects' 
-                ? 'text-primary font-bold' 
+              activeSection === 'projects'
+                ? 'text-primary font-bold'
                 : 'text-on-surface-variant hover:text-secondary'
             }`}
           >
@@ -73,7 +73,7 @@ export default function Header() {
           Contact Me
         </button>
 
-        <button 
+        <button
           className="md:hidden text-primary"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -90,22 +90,22 @@ export default function Header() {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-surface/95 backdrop-blur-md border-b border-white/10 px-5 sm:px-8 py-4 flex flex-col gap-4">
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             onClick={() => setIsMobileMenuOpen(false)}
             className={`text-sm tracking-wider font-medium ${activeSection === 'profile' ? 'text-primary font-bold' : 'text-on-surface-variant'}`}
           >
             Profile
           </Link>
-          <Link 
-            href="/skills" 
+          <Link
+            href="/skills"
             onClick={() => setIsMobileMenuOpen(false)}
             className={`text-sm tracking-wider font-medium ${activeSection === 'skills' ? 'text-primary font-bold' : 'text-on-surface-variant'}`}
           >
             Skills
           </Link>
-          <Link 
-            href="/projects" 
+          <Link
+            href="/projects"
             onClick={() => setIsMobileMenuOpen(false)}
             className={`text-sm tracking-wider font-medium ${activeSection === 'projects' ? 'text-primary font-bold' : 'text-on-surface-variant'}`}
           >

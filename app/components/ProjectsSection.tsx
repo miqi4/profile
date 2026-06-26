@@ -1,37 +1,7 @@
-import { ReactElement } from 'react';
+import Link from 'next/link';
+import { projects } from '../projects/project-data';
 
-const projects = [
-  {
-    title: "Portofolio Profile Web",
-    icon: "code",
-    description: "A modern personal portfolio website showcasing projects, skills, and experience. Built with Next.js for optimal performance and SEO with server-side rendering, featuring smooth page transitions and responsive design.",
-    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    span: "col-span-1 md:col-span-2 lg:col-span-2"
-  },
-  {
-    title: "Laboratory Business Analytics Website",
-    icon: "database",
-    description: "A comprehensive business analytics dashboard for laboratory operations. Built with native PHP and MySQL, providing real-time insights on data analysis, reporting, and business metrics management.",
-    tags: ["PHP", "MySQL", "Bootstrap"],
-    span: "col-span-1"
-  },
-  {
-    title: "Digital Printing Website",
-    icon: "printer",
-    description: "Full-featured digital printing management system with order processing, inventory tracking, and customer management. Built with Laravel framework and Filament admin panel for seamless operations.",
-    tags: ["Laravel", "Filament", "MySQL", "PHP"],
-    span: "col-span-1"
-  },
-  {
-    title: "Bus Ticket Booking Website",
-    icon: "bus",
-    description: "A sophisticated online bus ticketing platform enabling passengers to search, book, and manage reservations. Developed with Laravel and Filament for robust backend operations and intuitive admin interface.",
-    tags: ["Laravel", "Filament", "MySQL", "PHP"],
-    span: "col-span-1 md:col-span-2 lg:col-span-2"
-  }
-];
-
-const iconMap: Record<string, ReactElement> = {
+const iconMap = {
   code: (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -51,7 +21,7 @@ const iconMap: Record<string, ReactElement> = {
     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12a2 2 0 012 2v10a2 2 0 01-2 2H8a2 2 0 01-2-2V9a2 2 0 012-2zM8 9v6m4-6v6m4-6v6M9 19h6" />
     </svg>
-  )
+  ),
 };
 
 export default function ProjectsSection() {
@@ -67,28 +37,44 @@ export default function ProjectsSection() {
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project) => (
-          <article 
+        {projects.map((project, index) => (
+          <article
             key={project.title}
-            className={`${project.span} bg-surface-container border border-white/10 rounded-lg p-6 flex flex-col h-full cursor-pointer transition-all duration-200 hover:translate-y-[-2px] hover:scale-[1.02] hover:bg-surface-container-high`}
+            className={`${
+              index === 0 || index === 3
+                ? 'md:col-span-2 lg:col-span-2'
+                : 'col-span-1'
+            } bg-surface-container border border-white/10 rounded-lg p-6 flex flex-col h-full transition-all duration-200 hover:translate-y-[-2px] hover:scale-[1.01] hover:bg-surface-container-high`}
           >
-            <div className="flex justify-between items-start mb-3">
-              <h2 className="text-[24px] sm:text-[28px] lg:text-[32px] leading-[1.3] font-semibold text-primary-fixed font-[family-name:var(--font-family-display)]">
-                {project.title}
-              </h2>
-              <span className="text-secondary">
+            <div className="flex justify-between items-start mb-3 gap-3">
+              <div className="space-y-2">
+                <div className="flex flex-wrap gap-2">
+                  <span className="inline-flex w-fit items-center rounded-full border border-white/10 bg-surface-container-high px-3 py-1 text-[11px] uppercase tracking-[0.25em] text-secondary">
+                    {project.projectType}
+                  </span>
+                  {project.statusLabel ? (
+                    <span className="inline-flex w-fit items-center rounded-full border border-secondary/30 bg-secondary/10 px-3 py-1 text-[11px] uppercase tracking-[0.25em] text-secondary">
+                      {project.statusLabel}
+                    </span>
+                  ) : null}
+                </div>
+                <h2 className="text-[24px] sm:text-[28px] lg:text-[32px] leading-[1.3] font-semibold text-primary-fixed font-[family-name:var(--font-family-display)]">
+                  {project.title}
+                </h2>
+              </div>
+              <span className="text-secondary shrink-0">
                 {iconMap[project.icon]}
               </span>
             </div>
-            
+
             <p className="text-base leading-relaxed text-on-surface-variant mb-6 flex-grow">
               {project.description}
             </p>
-            
+
             <div className="mt-auto">
               <div className="flex flex-wrap gap-1 mb-3">
                 {project.tags.map((tag) => (
-                  <span 
+                  <span
                     key={tag}
                     className="bg-surface-variant text-on-surface-variant font-mono text-sm px-2 py-1 rounded"
                   >
@@ -96,16 +82,22 @@ export default function ProjectsSection() {
                   </span>
                 ))}
               </div>
-              
-              <a 
-                href="#" 
-                className="inline-flex items-center gap-2 text-sm tracking-wider font-medium text-secondary hover:text-primary transition-colors"
-              >
-                View Repository
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
+
+              {project.previewEnabled ? (
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="inline-flex items-center gap-2 text-sm tracking-wider font-medium text-secondary hover:text-primary transition-colors"
+                >
+                  Preview Web
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              ) : (
+                <span className="inline-flex items-center gap-2 text-sm tracking-wider font-medium text-on-surface-variant/60">
+                  Preview unavailable
+                </span>
+              )}
             </div>
           </article>
         ))}
@@ -113,4 +105,3 @@ export default function ProjectsSection() {
     </section>
   );
 }
-
