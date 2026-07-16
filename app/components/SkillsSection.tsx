@@ -327,7 +327,7 @@ export default function SkillsSection() {
               transition: 'color 0.2s ease',
             }}
           >
-            {launched ? 'Membuka...' : progress > 0 ? `${Math.round(progress)}%` : 'Tahan untuk lanjut'}
+            {launched ? 'Opening...' : progress > 0 ? `${Math.round(progress)}%` : 'Hold to continue'}
           </span>
         </button>
       </div>

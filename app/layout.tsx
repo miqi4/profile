@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import TransitionOverlay from "./components/TransitionOverlay";
 import IntroScreen from "./components/IntroScreen";
+import InteractiveDotGrid from "./components/InteractiveDotGrid";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,8 +20,8 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  title: "Mohammad Iqbal - Backend Developer",
-  description: "Portfolio website of Mohammad Iqbal, a backend developer specializing in Next.js, Laravel, and Java",
+  title: "Mohammad Iqbal - Junior Developer",
+  description: "Portfolio website of Mohammad Iqbal, a junior developer specializing in Next.js, Laravel, and Java",
 };
 
 export default function RootLayout({
@@ -30,7 +31,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`dark ${inter.variable} ${sora.variable}`}>
-      <body className="h-screen w-screen flex flex-col antialiased overflow-hidden">
+      <body className="h-screen w-screen flex flex-col antialiased overflow-hidden bg-transparent">
+        <InteractiveDotGrid />
         <IntroScreen />
         <Header />
         <main className="flex-1 overflow-y-auto">

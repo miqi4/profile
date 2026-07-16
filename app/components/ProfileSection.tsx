@@ -89,7 +89,7 @@ export default function ProfileSection() {
         <div className="lg:col-span-7 flex flex-col gap-6 order-2 lg:order-1 z-10">
           <div className="fade-up opacity-0 translate-y-5 transition-all duration-700">
             <span className="inline-block bg-surface-variant text-primary px-3 py-1 rounded-full text-sm tracking-wider font-medium border border-white/10 mb-2">
-              Backend Developer
+              Junior Developer
             </span>
           </div>
           
@@ -232,7 +232,7 @@ export default function ProfileSection() {
               transition: 'color 0.2s ease',
             }}
           >
-            {launched ? 'Membuka...' : progress > 0 ? `${Math.round(progress)}%` : 'Tahan untuk lanjut'}
+            {launched ? 'Opening...' : progress > 0 ? `${Math.round(progress)}%` : 'Hold to continue'}
           </span>
         </button>
       </div>
