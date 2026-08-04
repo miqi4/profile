@@ -31,6 +31,12 @@ export default function InteractiveDotGrid() {
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('resize', handleResize);
 
+    // Detect theme by checking the 'dark' class on <html>
+    function getInkColor(): string {
+      const isDark = document.documentElement.classList.contains('dark');
+      return isDark ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.4)';
+    }
+
     class Dot {
       x: number;
       y: number;
@@ -44,13 +50,13 @@ export default function InteractiveDotGrid() {
         this.y = y;
         this.baseX = x;
         this.baseY = y;
-        this.size = 1.5;
+        this.size = 2;
         this.density = (Math.random() * 30) + 1;
       }
 
       draw() {
         if (!ctx) return;
-        ctx.fillStyle = 'rgba(192, 193, 255, 0.4)'; // var(--color-primary) with opacity
+        ctx.fillStyle = getInkColor();
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.closePath();
@@ -121,7 +127,7 @@ export default function InteractiveDotGrid() {
   return (
     <canvas 
       ref={canvasRef} 
-      className="fixed inset-0 w-full h-full opacity-60 pointer-events-none z-[-1]" 
+      className="fixed inset-0 w-full h-full pointer-events-none z-[-1]" 
     />
   );
 }

@@ -26,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${tiny5.variable}`}>
-      <body className="h-screen w-screen flex flex-col antialiased overflow-hidden bg-canvas text-ink transition-colors duration-300">
+    <html lang="en" suppressHydrationWarning className={`${tiny5.variable} bg-canvas transition-colors duration-300`}>
+      <body className="h-screen w-screen flex flex-col antialiased overflow-hidden bg-transparent text-ink">
         <ThemeProvider>
           <InteractiveDotGrid />
           <IntroScreen />
