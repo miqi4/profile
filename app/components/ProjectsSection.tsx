@@ -27,11 +27,11 @@ const iconMap = {
 export default function ProjectsSection() {
   return (
     <section className="w-full px-5 sm:px-8 md:px-16 xl:px-24 py-8 min-h-[calc(100vh-64px)]">
-      <header className="mb-8">
-        <h1 className="text-[32px] sm:text-[48px] lg:text-[64px] leading-[1.2] md:leading-[1.1] tracking-tight md:tracking-[-0.02em] font-bold mb-4 text-primary font-[family-name:var(--font-family-display)]">
+      <header className="mb-12 border-b-4 border-ink pb-6">
+        <h1 className="text-[32px] sm:text-[48px] lg:text-[64px] leading-[1.1] tracking-tight font-bold mb-4 text-ink uppercase font-[family-name:var(--font-family-display)]">
           Featured Projects
         </h1>
-        <p className="text-lg leading-relaxed text-on-surface-variant max-w-2xl">
+        <p className="text-lg leading-relaxed text-ink-muted max-w-2xl font-mono">
           A selection of projects I've built with modern web technologies, combining Next.js, Laravel, PHP, and MySQL for robust and scalable applications.
         </p>
       </header>
@@ -44,39 +44,39 @@ export default function ProjectsSection() {
               index === 0 || index === 3
                 ? 'md:col-span-2 lg:col-span-2'
                 : 'col-span-1'
-            } bg-surface-container border border-white/10 rounded-lg p-6 flex flex-col h-full transition-all duration-200 hover:translate-y-[-2px] hover:scale-[1.01] hover:bg-surface-container-high`}
+            } bg-canvas border-2 border-ink p-6 flex flex-col h-full transition-all duration-200 hover:-translate-y-2 hover:shadow-[8px_8px_0_0_var(--ink)]`}
           >
-            <div className="flex justify-between items-start mb-3 gap-3">
-              <div className="space-y-2">
+            <div className="flex justify-between items-start mb-4 gap-3">
+              <div className="space-y-3">
                 <div className="flex flex-wrap gap-2">
-                  <span className="inline-flex w-fit items-center rounded-full border border-white/10 bg-surface-container-high px-3 py-1 text-[11px] uppercase tracking-[0.25em] text-secondary">
+                  <span className="inline-flex w-fit items-center border border-ink bg-ink text-canvas px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em]">
                     {project.projectType}
                   </span>
                   {project.statusLabel ? (
-                    <span className="inline-flex w-fit items-center rounded-full border border-secondary/30 bg-secondary/10 px-3 py-1 text-[11px] uppercase tracking-[0.25em] text-secondary">
+                    <span className="inline-flex w-fit items-center border border-ink bg-canvas text-ink px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em]">
                       {project.statusLabel}
                     </span>
                   ) : null}
                 </div>
-                <h2 className="text-[24px] sm:text-[28px] lg:text-[32px] leading-[1.3] font-semibold text-primary-fixed font-[family-name:var(--font-family-display)]">
+                <h2 className="text-[24px] sm:text-[28px] lg:text-[32px] leading-[1.3] font-bold text-ink uppercase font-[family-name:var(--font-family-display)]">
                   {project.title}
                 </h2>
               </div>
-              <span className="text-secondary shrink-0">
+              <span className="text-ink shrink-0">
                 {iconMap[project.icon]}
               </span>
             </div>
 
-            <p className="text-base leading-relaxed text-on-surface-variant mb-6 flex-grow">
+            <p className="text-base leading-relaxed text-ink-muted mb-8 flex-grow font-mono">
               {project.description}
             </p>
 
-            <div className="mt-auto">
-              <div className="flex flex-wrap gap-1 mb-3">
+            <div className="mt-auto pt-4 border-t-2 border-ink/20">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="bg-surface-variant text-on-surface-variant font-mono text-sm px-2 py-1 rounded"
+                    className="border border-ink/30 text-ink-muted font-mono text-xs uppercase px-2 py-1"
                   >
                     {tag}
                   </span>
@@ -86,15 +86,15 @@ export default function ProjectsSection() {
               {project.previewEnabled ? (
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="inline-flex items-center gap-2 text-sm tracking-wider font-medium text-secondary hover:text-primary transition-colors"
+                  className="inline-flex items-center justify-between w-full border-2 border-ink bg-canvas hover:bg-ink hover:text-canvas text-ink px-4 py-3 text-sm tracking-widest font-bold uppercase transition-colors"
                 >
-                  Preview Web
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  <span>Preview Web</span>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </Link>
               ) : (
-                <span className="inline-flex items-center gap-2 text-sm tracking-wider font-medium text-on-surface-variant/60">
+                <span className="inline-flex items-center justify-center w-full border-2 border-ink-muted text-ink-muted px-4 py-3 text-sm tracking-widest font-bold uppercase">
                   Preview unavailable
                 </span>
               )}

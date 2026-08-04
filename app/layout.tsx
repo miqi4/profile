@@ -1,21 +1,17 @@
 import type { Metadata } from "next";
-import { Inter, Sora } from "next/font/google";
+import { Tiny5 } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import TransitionOverlay from "./components/TransitionOverlay";
 import IntroScreen from "./components/IntroScreen";
 import InteractiveDotGrid from "./components/InteractiveDotGrid";
+import { ThemeProvider } from "./components/ThemeProvider";
 
-const inter = Inter({
+const tiny5 = Tiny5({
+  weight: "400",
   subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const sora = Sora({
-  subsets: ["latin"],
-  variable: "--font-sora",
+  variable: "--font-tiny5",
   display: "swap",
 });
 
@@ -30,16 +26,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`dark ${inter.variable} ${sora.variable}`}>
-      <body className="h-screen w-screen flex flex-col antialiased overflow-hidden bg-transparent">
-        <InteractiveDotGrid />
-        <IntroScreen />
-        <Header />
-        <main className="flex-1 overflow-y-auto">
-          {children}
-        </main>
-        <Footer />
-        <TransitionOverlay />
+    <html lang="en" suppressHydrationWarning className={`${tiny5.variable} bg-canvas transition-colors duration-300`}>
+      <body className="h-screen w-screen flex flex-col antialiased overflow-hidden bg-transparent text-ink">
+        <ThemeProvider>
+          <InteractiveDotGrid />
+          <IntroScreen />
+          <Header />
+          <main className="flex-1 overflow-y-auto">
+            {children}
+          </main>
+          <Footer />
+          <TransitionOverlay />
+        </ThemeProvider>
       </body>
     </html>
   );
