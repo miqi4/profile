@@ -8,6 +8,7 @@ import CurtainDrag from './CurtainDrag';
 export default function ProfileSection() {
   const [progress, setProgress] = useState(0);
   const [launched, setLaunched] = useState(false);
+  const [imageColorActive, setImageColorActive] = useState(false);
 
   const btnRef = useRef<HTMLButtonElement>(null);
   const holdStartRef = useRef<number | null>(null);
@@ -152,15 +153,30 @@ export default function ProfileSection() {
         </div>
 
         <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end fade-up opacity-0 translate-y-5 transition-all duration-700 delay-200">
-          <div className="relative w-[260px] h-[260px] sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 border-4 border-ink grayscale hover:grayscale-0 transition-all duration-500 shadow-[8px_8px_0_0_var(--ink)]">
-            <Image 
-              alt="Mohammad Iqbal Profile" 
-              src="/profil.jpeg"
-              width={400}
-              height={400}
-              className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-              priority
-            />
+          <div className="w-[260px] h-[260px] sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 mb-3 mr-3">
+            <div 
+              className={`relative w-full h-full border-4 border-ink transition-all duration-500 shadow-[8px_8px_0_0_var(--ink)] overflow-hidden cursor-pointer ${
+                imageColorActive ? 'grayscale-0' : 'grayscale hover:grayscale-0'
+              }`}
+              onClick={() => setImageColorActive(!imageColorActive)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  setImageColorActive(!imageColorActive);
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              aria-label="Toggle photo color"
+            >
+              <Image 
+                alt="Mohammad Iqbal Profile" 
+                src="/profil.jpeg"
+                fill
+                sizes="(max-width: 640px) 260px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 384px"
+                className="object-cover object-center transition-transform duration-500 hover:scale-105"
+                priority
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -256,31 +272,37 @@ export default function ProfileSection() {
           pointer-events: none;
           opacity: 0;
           z-index: 1;
-          text-shadow: 2px 0 currentColor, -2px 0 currentColor;
+          text-shadow: 1px 0 currentColor, -1px 0 currentColor;
         }
 
         .glitch-text:hover::before {
           color: #ff3158;
-          opacity: 0.7;
-          animation: text-glitch-red 160ms steps(2, end) infinite;
+          opacity: 0.4;
+          animation: text-glitch-red 200ms steps(2, end) infinite;
         }
 
         .glitch-text:hover::after {
           color: #18d9ff;
-          opacity: 0.7;
-          animation: text-glitch-cyan 140ms steps(2, end) infinite reverse;
+          opacity: 0.4;
+          animation: text-glitch-cyan 180ms steps(2, end) infinite reverse;
         }
 
         @keyframes text-glitch-red {
-          0%, 100% { clip-path: inset(8% 0 72% 0); transform: translate(-3px, -1px); }
-          35% { clip-path: inset(48% 0 28% 0); transform: translate(3px, 1px); }
-          70% { clip-path: inset(78% 0 4% 0); transform: translate(-3px, 0); }
+          0%, 100% { clip-path: inset(8% 0 72% 0); transform: translate(-2px, -1px); }
+          50% { clip-path: inset(48% 0 28% 0); transform: translate(2px, 0); }
         }
 
         @keyframes text-glitch-cyan {
-          0%, 100% { clip-path: inset(68% 0 10% 0); transform: translate(3px, 1px); }
-          40% { clip-path: inset(16% 0 58% 0); transform: translate(-3px, 0); }
-          75% { clip-path: inset(38% 0 36% 0); transform: translate(2px, -1px); }
+          0%, 100% { clip-path: inset(68% 0 10% 0); transform: translate(2px, 1px); }
+          50% { clip-path: inset(16% 0 58% 0); transform: translate(-2px, 0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .glitch-text:hover::before,
+          .glitch-text:hover::after {
+            animation: none;
+            opacity: 0;
+          }
         }
 
         @media (prefers-reduced-motion: reduce) {

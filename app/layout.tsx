@@ -27,15 +27,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${tiny5.variable} bg-canvas transition-colors duration-300`}>
-      <body className="h-screen w-screen flex flex-col antialiased overflow-hidden bg-transparent text-ink">
+      <body className="h-screen w-screen antialiased overflow-hidden bg-transparent text-ink">
         <ThemeProvider>
           <InteractiveDotGrid />
           <IntroScreen />
-          <Header />
-          <main className="flex-1 overflow-y-auto">
-            {children}
-          </main>
-          <Footer />
+          <div className="h-full w-full flex flex-col">
+            <Header />
+            <main className="flex-1 overflow-y-auto">
+              {children}
+            </main>
+            <Footer />
+          </div>
           <TransitionOverlay />
         </ThemeProvider>
       </body>

@@ -31,7 +31,7 @@ export default function ProjectsSection() {
         <h1 className="text-[32px] sm:text-[48px] lg:text-[64px] leading-[1.1] tracking-tight font-bold mb-4 text-ink uppercase font-[family-name:var(--font-family-display)]">
           Featured Projects
         </h1>
-        <p className="text-lg leading-relaxed text-ink-muted max-w-2xl font-mono">
+        <p className="text-lg leading-relaxed text-ink max-w-2xl font-mono bg-canvas px-4 py-3 border-l-4 border-ink">
           A selection of projects I've built with modern web technologies, combining Next.js, Laravel, PHP, and MySQL for robust and scalable applications.
         </p>
       </header>

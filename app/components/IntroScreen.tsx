@@ -33,8 +33,8 @@ export default function IntroScreen() {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[var(--color-background)] transition-all duration-700 ease-in-out ${
-        fadeOut ? 'opacity-0 scale-105 blur-md pointer-events-none' : 'opacity-100 scale-100 blur-none'
+      className={`fixed top-0 left-0 w-screen h-screen z-[9999] flex flex-col items-center justify-center bg-canvas transition-all duration-700 ease-in-out ${
+        fadeOut ? 'opacity-0 -translate-y-full pointer-events-none' : 'opacity-100 translate-y-0'
       }`}
     >
       <div className="relative z-10 text-center mb-10 px-4">

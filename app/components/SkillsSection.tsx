@@ -85,11 +85,11 @@ export default function SkillsSection() {
           transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
         }}
       >
-        <div className="max-w-3xl border-l-4 border-ink pl-6">
+        <div className="max-w-3xl">
           <h1 className="text-[32px] sm:text-[40px] md:text-[48px] leading-[1.1] tracking-tight font-bold text-ink mb-4 uppercase font-[family-name:var(--font-family-display)] animate-in fade-in slide-in-from-top-4 duration-700">
             Technical Proficiency
           </h1>
-          <p className="text-lg leading-relaxed text-ink-muted font-mono animate-in fade-in slide-in-from-top-6 duration-700 delay-100">
+          <p className="text-lg leading-relaxed text-ink font-mono animate-in fade-in slide-in-from-top-6 duration-700 delay-100 bg-canvas px-4 py-3 border-l-4 border-ink">
             A comprehensive overview of my core engineering capabilities, emphasizing robust backend architectures and modern frontend frameworks.
           </p>
         </div>
