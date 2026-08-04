@@ -15,7 +15,7 @@ export default function InteractiveDotGrid() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    let mouse = { x: width / 2, y: height / 2, radius: 120 };
+    let mouse = { x: width / 2, y: height / 2, radius: 80 };
 
     const handleMouseMove = (e: MouseEvent) => {
       mouse.x = e.clientX;
@@ -91,7 +91,7 @@ export default function InteractiveDotGrid() {
     }
 
     let dotArray: Dot[] = [];
-    
+
     function init() {
       dotArray = [];
       const spacing = 35;
@@ -125,9 +125,9 @@ export default function InteractiveDotGrid() {
   }, []);
 
   return (
-    <canvas 
-      ref={canvasRef} 
-      className="fixed inset-0 w-full h-full pointer-events-none z-[-1]" 
+    <canvas
+      ref={canvasRef}
+      className="dot-grid fixed inset-0 w-full h-full pointer-events-none z-0"
     />
   );
 }

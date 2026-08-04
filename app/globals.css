@@ -48,6 +48,7 @@ html {
 }
 
 body {
+  isolation: isolate;
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -131,4 +132,10 @@ body {
 .animate-marquee-left:hover,
 .animate-marquee-right:hover {
   animation-play-state: paused;
+}
+
+/* Keep the interactive dot canvas visible as a background in both themes. */
+body > *:not(.dot-grid) {
+  position: relative;
+  z-index: 1;
 }

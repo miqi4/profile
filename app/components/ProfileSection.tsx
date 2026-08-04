@@ -94,10 +94,10 @@ export default function ProfileSection() {
           </div>
           
           <h1 className="fade-up opacity-0 translate-y-5 transition-all duration-700 delay-100 text-[32px] sm:text-[48px] lg:text-[64px] leading-[1.1] tracking-tight font-bold text-ink uppercase font-[family-name:var(--font-family-display)]">
-            Mohammad Iqbal <br className="hidden sm:block" /><span className="text-ink-muted"> (Iqbaal)</span>
+            <span className="name-primary glitch-text" data-text="Mohammad Iqbal">Mohammad Iqbal</span> <br className="hidden sm:block" /><span className="text-ink-muted name-secondary glitch-text" data-text=" (Iqbaal)"> (Iqbaal)</span>
           </h1>
           
-          <p className="fade-up opacity-0 translate-y-5 transition-all duration-700 delay-200 text-lg leading-relaxed text-ink-muted max-w-2xl font-mono">
+          <p className="fade-up opacity-0 translate-y-5 transition-all duration-700 delay-200 text-lg leading-relaxed text-ink bg-canvas px-4 py-3 border-l-4 border-ink max-w-2xl font-mono">
             An Informatics Engineering student focused on software and web development, with a strong understanding of programming logic and problem-solving. Ready to grow and contribute as a Junior Developer.
           </p>
           
@@ -242,6 +242,59 @@ export default function ProfileSection() {
       </div>
 
       <style jsx>{`
+        .glitch-text {
+          position: relative;
+          cursor: default;
+          isolation: isolate;
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+          content: attr(data-text);
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          opacity: 0;
+          z-index: 1;
+          text-shadow: 2px 0 currentColor, -2px 0 currentColor;
+        }
+
+        .glitch-text:hover::before {
+          color: #ff3158;
+          opacity: 0.7;
+          animation: text-glitch-red 160ms steps(2, end) infinite;
+        }
+
+        .glitch-text:hover::after {
+          color: #18d9ff;
+          opacity: 0.7;
+          animation: text-glitch-cyan 140ms steps(2, end) infinite reverse;
+        }
+
+        @keyframes text-glitch-red {
+          0%, 100% { clip-path: inset(8% 0 72% 0); transform: translate(-3px, -1px); }
+          35% { clip-path: inset(48% 0 28% 0); transform: translate(3px, 1px); }
+          70% { clip-path: inset(78% 0 4% 0); transform: translate(-3px, 0); }
+        }
+
+        @keyframes text-glitch-cyan {
+          0%, 100% { clip-path: inset(68% 0 10% 0); transform: translate(3px, 1px); }
+          40% { clip-path: inset(16% 0 58% 0); transform: translate(-3px, 0); }
+          75% { clip-path: inset(38% 0 36% 0); transform: translate(2px, -1px); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .glitch-text:hover::before,
+          .glitch-text:hover::after {
+            animation: none;
+            opacity: 0;
+          }
+        }
+        .name-primary, .name-secondary {
+          display: inline-block;
+          will-change: transform, opacity;
+        }
+
         .fade-up.visible {
           opacity: 1 !important;
           transform: translateY(0) !important;
